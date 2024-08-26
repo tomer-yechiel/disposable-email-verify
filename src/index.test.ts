@@ -1,4 +1,4 @@
-import { test, expect } from "vitest";
+import { expect, test } from "vitest";
 import { isEmailValid } from "./index.js";
 
 test("isEmailValid", async () => {
@@ -9,4 +9,4 @@ test("isEmailValid", async () => {
 test("isEmailValid", async () => {
   const isValid = await isEmailValid("mer53715@tccho.com");
   expect(isValid).toBe(false);
-})
+});
