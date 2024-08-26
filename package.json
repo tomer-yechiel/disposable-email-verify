@@ -1,0 +1,52 @@
+{
+  "name": "disposable-email-verify",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsup",
+    "lint": "tsc",
+    "fix": "biome check --fix",
+    "check": "biome check",
+    "test": "vitest run",
+    "ci": "npm run lint && npm run build && npm run check && npm run check-exports && npm run test",
+    "check-exports": "attw --pack ."
+  },
+  "keywords": [
+    "email",
+    "fake",
+    "disposable",
+    "verification",
+    "verify",
+    "email-verification"
+  ],
+  "homepage": "https://github.com/tomer-yechiel/disposable-email-verify",
+  "bugs": {
+    "url": "https://github.com/tomer-yechiel/disposable-email-verify/issues"
+  },
+  "author": "Tomer Yechiel",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomer-yechiel/disposable-email-verify.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": "./dist/index.js",
+      "default": "./dist/index.cjs"
+    }
+  },
+  "type": "module",
+  "license": "MIT",
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.15.4",
+    "@biomejs/biome": "1.8.3",
+    "@types/node": "^22.5.0",
+    "tsup": "^8.2.4",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
+  }
+}
