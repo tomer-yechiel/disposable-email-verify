@@ -1,4 +1,3 @@
-
 const blacklistEmails = new Set();
 let loadingPromise: Promise<void> | null = null;
 
