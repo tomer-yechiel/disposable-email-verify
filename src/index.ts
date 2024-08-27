@@ -1,11 +1,13 @@
 const blacklistEmails = new Set();
 let loadingPromise: Promise<void> | null = null;
+let loaded = false;
 
 export async function isEmailValid(email: string): Promise<boolean> {
-  loadingPromise = loadingPromise ?? loadBlacklist();
-
-  if (blacklistEmails.size === 0) {
+  if (!loaded) {
+    loadingPromise = loadingPromise ?? loadBlacklist();
     await loadingPromise;
+    loadingPromise = null;
+    loaded = true;
   }
 
   const [_, domain] = email.split("@");
@@ -24,8 +26,11 @@ async function loadBlacklist() {
 
   setTimeout(
     () => {
-      loadingPromise = loadBlacklist();
+      loadBlacklist().catch((e) => {
+        console.error(e);
+        loadBlacklist();
+      });
     },
-    1000 * 60 * 60 * 6,
+    1000 * 60 * 60,
   );
 }
