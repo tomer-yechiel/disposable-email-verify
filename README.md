@@ -8,6 +8,16 @@
 
 Simple package to check if an email is temporary/disposable email using public blacklist.
 
+
+**Usage**
+
+```ts
+import { isEmailValid } from "disposable-email-verify";
+
+const isValid : boolean = await isEmailValid("foo@bar.com");
+```
+
+
 BlackList sources:
 1. https://raw.githubusercontent.com/disposable/disposable-email-domains/master/domains.txt
 
